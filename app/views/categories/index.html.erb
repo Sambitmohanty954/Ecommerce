@@ -1,0 +1,23 @@
+<h1> Listing Categories : <%= @categories.length %></h1>
+
+<% if @categories.empty? %>
+<p>categories have not been added yet </p>
+<% else %>
+<ol>
+<% @categories.each do |category| %>
+	<li><%= link_to category.name , category_path(category.id) %>
+		(<%= Product.where('category_id = ?' , category.id).length %>)
+		<%#= link_to "Show" , category_path(category.id) %>
+	</li>
+	<%	end %>
+</ol>
+<% end %>
+
+<%= link_to "Add Category(ROR)" , new_category_path ,target: "_self" %> <%#   this is the best way to generate the link %>
+<br>
+<%= link_to "Add Catgory(R)" , "/categories/new" %>
+<br>
+<a href="/categories/new" target="_blank">Add Category</a>
+<!-- there are 3 way of how wecan generate link -->
+<%# link_to "Add Product" , new_product_path %> 
+

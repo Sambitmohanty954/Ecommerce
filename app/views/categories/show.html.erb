@@ -1,0 +1,14 @@
+<h2><%= @category.name %></h2>
+<%= link_to "edit" , edit_category_path(@category.id) %> ||
+<%= link_to "destroy" , category_path(@category.id) , method: :delete, data:{confirm: "Are you sure ?"} %>
+<% if @products.empty? %>
+<p> No Products Found </p>
+<% else %>
+<ol>
+	<% @products.each do |product| %>
+		<li><%= product.name %> - INR: <%= product.price %></li>
+<% end %>
+</ol>
+<% end %>
+
+<%= link_to "Back" , categories_path %>
